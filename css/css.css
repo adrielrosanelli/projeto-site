@@ -1,0 +1,23 @@
+\\Classes :root {
+  --var-corPrimaria:#fff;
+  --var-corSecundaria:#593;
+  --var-corDetalhe:#857;
+}
+
+.teste {
+  text-align: center;
+}
+
+.img {
+  text-align: center;
+  background-color: grey;
+}
+
+\\IDs #img {
+  width: 90%;
+  height: 90%;
+}
+
+#rodape {
+  background-color: honeydew;
+}

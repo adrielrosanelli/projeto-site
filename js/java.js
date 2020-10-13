@@ -1,4 +1,6 @@
+$('[data-submenu]').submenupicker();
 $(document).ready(function () {
+    
     $("#btn-mostrar").click(function () {
         $(".carousel").show();
     });
