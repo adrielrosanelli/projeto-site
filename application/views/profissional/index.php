@@ -4,6 +4,7 @@
 	<?php
 	foreach ($profissional as $p){
 	?>
+	
 	<div class="col-4">
 	<div class="card">
 		

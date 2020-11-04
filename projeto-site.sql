@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 04-Nov-2020 às 01:18
+-- Tempo de geração: 05-Nov-2020 às 00:42
 -- Versão do servidor: 10.4.13-MariaDB
 -- versão do PHP: 7.4.8
 
@@ -68,6 +68,7 @@ CREATE TABLE `formacao` (
 CREATE TABLE `profissional` (
   `id` int(11) NOT NULL,
   `nome` varchar(30) DEFAULT NULL,
+  `descricao` varchar(200) NOT NULL,
   `idade` int(2) DEFAULT NULL,
   `escolaridade` enum('0','1','2','3','4','5') DEFAULT NULL,
   `area_id` int(11) NOT NULL,
@@ -79,8 +80,8 @@ CREATE TABLE `profissional` (
 -- Extraindo dados da tabela `profissional`
 --
 
-INSERT INTO `profissional` (`id`, `nome`, `idade`, `escolaridade`, `area_id`, `preco`, `status`) VALUES
-(1, 'adriel', 24, '3', 1, 2500, '0');
+INSERT INTO `profissional` (`id`, `nome`, `descricao`, `idade`, `escolaridade`, `area_id`, `preco`, `status`) VALUES
+(1, 'adriel', '', 24, '3', 1, 2500, '0');
 
 -- --------------------------------------------------------
 

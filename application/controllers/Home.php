@@ -3,6 +3,6 @@ class Home extends MY_Controller
 {
     public function index()
     {
-        $this->load->view('home/home');
+        $this->load->view('home/index');
     }
 }

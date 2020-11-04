@@ -1,7 +1,7 @@
 <?php 
 
 class Profissionais_model extends CI_Model {
-    public  function get(){
+    public function get(){
         $query = $this->db->get('profissional');
         $this->db->last_query();
         return $query->result();
