@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 05-Nov-2020 às 00:42
--- Versão do servidor: 10.4.13-MariaDB
--- versão do PHP: 7.4.8
+-- Tempo de geração: 10-Nov-2020 às 00:45
+-- Versão do servidor: 10.4.14-MariaDB
+-- versão do PHP: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -81,7 +81,10 @@ CREATE TABLE `profissional` (
 --
 
 INSERT INTO `profissional` (`id`, `nome`, `descricao`, `idade`, `escolaridade`, `area_id`, `preco`, `status`) VALUES
-(1, 'adriel', '', 24, '3', 1, 2500, '0');
+(1, 'adriel', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum corrupti officia exercitationem labore atque deserunt alias inventore similique commodi iure, molestiae consectetur dicta vel eveni', 24, '3', 1, 2500, '0'),
+(2, 'Gledson', 'Atuo na área á exatamente 1/16 avos de um ano', 27, '2', 3, 6000, '0'),
+(3, 'çabola', 'jdgbhsuidjgbsjkdçgbdçfb', 35, '4', 2, 7500, NULL),
+(4, 'Cleber', 'sdasdasdadsadad', 17, '1', 7, 1500, NULL);
 
 -- --------------------------------------------------------
 
