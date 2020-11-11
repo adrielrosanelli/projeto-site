@@ -6,7 +6,7 @@ class Profissionais_model extends CI_Model {
         $this->db->last_query();
         return $query->result();
     }
-    public function getWere($where){
+    public function getWhere($where){
         $this->db->where($where);
         return $this->db->get('profissional')->row();
     }

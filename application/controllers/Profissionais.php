@@ -9,7 +9,15 @@ class Profissionais extends MY_Controller{
 
     public function index(){
         $data['profissional']=$this->Profissionais_model->get();
-        $this->load->view('profissional/index',$data);
+        $this->load->view('profissional/list',$data);
+    }
+    public function detalhes($id){
+        if(empty($id)){
+            show_404();
+        }else{
+            $data['profissional']=$this->Profissionais_model->getWhere(array('id'=>$id));
+            $this->load->view('profissional/detalhes',$data);
+        }
     }
 }
 

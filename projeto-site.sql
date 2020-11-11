@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 10-Nov-2020 às 00:45
--- Versão do servidor: 10.4.14-MariaDB
--- versão do PHP: 7.2.33
+-- Tempo de geração: 11-Nov-2020 às 01:52
+-- Versão do servidor: 10.4.13-MariaDB
+-- versão do PHP: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -89,6 +89,26 @@ INSERT INTO `profissional` (`id`, `nome`, `descricao`, `idade`, `escolaridade`, 
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(15) NOT NULL,
+  `senha` text NOT NULL,
+  `email` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `nome`, `senha`, `email`) VALUES
+(1, 'adriel', '123', 'adriel16smo@gmail.com');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `vaga`
 --
 
@@ -132,10 +152,26 @@ ALTER TABLE `profissional`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `vaga`
 --
 ALTER TABLE `vaga`
   ADD PRIMARY KEY (`profissional_id`,`contratante_id`);
+
+--
+-- AUTO_INCREMENT de tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
