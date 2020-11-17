@@ -102,7 +102,7 @@ class Contatos extends MY_Controller {
                 'arquivo'=>$arquivo,
             );
 			if($this->Contatos_model->update($id,$update)){
-				$this->session->set_flashdata('mensagem','Contato alterar com sucesso');
+				$this->session->set_flashdata('mensagem','Contato alterado com sucesso');
 			}else{
 				$this->session->set_flashdata('mensagem','Falha ao alterar o contato');
 			}

@@ -7,6 +7,14 @@
 </head>
 <body>
     <h2>Realize O Login</h2>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            
+        </div>
+    </div>
+</div>
+
 <?php echo validation_errors();?>
 <?=!empty($this->session->userdata('mensagem'))?$this->session->userdata('mensagem'):null;?>
 <form method="post" action="<?=base_url('login/action')?>">
