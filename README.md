@@ -1,9 +1,2 @@
 projeto-site
-extenções vscode{ 
-Auto Rename Tag - Jun Han,
-Bracket Pair Colorized,
-Error Lens,
-Git lens,
-Ident-rainbow,
-
-}
+fazer a tela de cadastro, com a opção de ser profissional ou contratante
