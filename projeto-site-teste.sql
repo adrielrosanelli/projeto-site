@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 17-Nov-2020 às 01:37
+-- Tempo de geração: 18-Nov-2020 às 01:47
 -- Versão do servidor: 10.4.13-MariaDB
 -- versão do PHP: 7.4.8
 
@@ -103,32 +103,21 @@ CREATE TABLE `projeto` (
 CREATE TABLE `transacionador` (
   `id` int(11) NOT NULL,
   `nome` varchar(30) DEFAULT NULL,
+  `email` varchar(30) NOT NULL,
+  `descricao` text NOT NULL,
   `dataNascimento` date DEFAULT NULL,
   `escolaridade` enum('0','1','2','3','4','5') DEFAULT NULL,
   `precoHora` int(6) DEFAULT NULL,
-  `status` enum('Disponivel','Ocupado') DEFAULT NULL,
-  `arquivo` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `usuario`
---
-
-CREATE TABLE `usuario` (
-  `email` varchar(30) NOT NULL,
-  `nome` varchar(15) NOT NULL,
-  `senha` varchar(20) NOT NULL,
-  `id` int(1) NOT NULL
+  `status` enum('Disponivel','Ocupado') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `usuario`
+-- Extraindo dados da tabela `transacionador`
 --
 
-INSERT INTO `usuario` (`email`, `nome`, `senha`, `id`) VALUES
-('adriel16smo@gmail.com', 'adriel', '123', 1);
+INSERT INTO `transacionador` (`id`, `nome`, `email`, `descricao`, `dataNascimento`, `escolaridade`, `precoHora`, `status`) VALUES
+(1, 'adriel', 'adriel16smo@gmail.com', '', '2020-11-11', '2', 1234, 'Disponivel'),
+(2, 'adriel', 'adriel16smo@gmail.com', 'Bacon ipsum dolor amet meatball tenderloin pork chop ground round shankle venison. Alcatra ground round ball tip andouille cupim. Shankle beef ribs frankfurter, chislic ball tip turkey pig short ribs porchetta burgdoggen prosciutto fatback. Fatback hamburger pancetta pork belly rump.', '2020-11-20', '1', 12441, 'Disponivel');
 
 -- --------------------------------------------------------
 
@@ -175,25 +164,19 @@ ALTER TABLE `formacao`
 --
 ALTER TABLE `formacaodoprofissional`
   ADD PRIMARY KEY (`formacaoId`,`profissionalId`),
-  ADD KEY `fk_formacao_has_profissional_profissional1` (`profissionalId`);
+  ADD KEY `fk_formacao_has_profissional_profissional` (`profissionalId`);
 
 --
 -- Índices para tabela `projeto`
 --
 ALTER TABLE `projeto`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_Projeto_profissional1` (`codigoDoContratante`);
+  ADD KEY `fk_Projeto_profissional` (`codigoDoContratante`);
 
 --
 -- Índices para tabela `transacionador`
 --
 ALTER TABLE `transacionador`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices para tabela `usuario`
---
-ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -208,10 +191,34 @@ ALTER TABLE `vaga`
 --
 
 --
--- AUTO_INCREMENT de tabela `usuario`
+-- AUTO_INCREMENT de tabela `area`
 --
-ALTER TABLE `usuario`
-  MODIFY `id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `area`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `areadoprojeto`
+--
+ALTER TABLE `areadoprojeto`
+  MODIFY `areaId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `formacao`
+--
+ALTER TABLE `formacao`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `projeto`
+--
+ALTER TABLE `projeto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `transacionador`
+--
+ALTER TABLE `transacionador`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restrições para despejos de tabelas
@@ -221,33 +228,33 @@ ALTER TABLE `usuario`
 -- Limitadores para a tabela `areadoprofissional`
 --
 ALTER TABLE `areadoprofissional`
-  ADD CONSTRAINT `fk_area_has_profissional_area1` FOREIGN KEY (`areaId`) REFERENCES `mydb`.`area` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_area_has_profissional_area` FOREIGN KEY (`areaId`) REFERENCES `area` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_area_has_profissional_profissional1` FOREIGN KEY (`profissionalId`) REFERENCES `transacionador` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `areadoprojeto`
 --
 ALTER TABLE `areadoprojeto`
-  ADD CONSTRAINT `fk_area_has_vaga_area1` FOREIGN KEY (`areaId`) REFERENCES `mydb`.`area` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_area_has_vaga_area1` FOREIGN KEY (`areaId`) REFERENCES `area` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `formacaodoprofissional`
 --
 ALTER TABLE `formacaodoprofissional`
-  ADD CONSTRAINT `fk_formacao_has_profissional_formacao1` FOREIGN KEY (`formacaoId`) REFERENCES `formacao` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_formacao_has_profissional_profissional1` FOREIGN KEY (`profissionalId`) REFERENCES `transacionador` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_formacao_has_profissional_formacao` FOREIGN KEY (`formacaoId`) REFERENCES `formacao` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_formacao_has_profissional_profissional` FOREIGN KEY (`profissionalId`) REFERENCES `transacionador` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `projeto`
 --
 ALTER TABLE `projeto`
-  ADD CONSTRAINT `fk_Projeto_profissional1` FOREIGN KEY (`codigoDoContratante`) REFERENCES `transacionador` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Projeto_profissional` FOREIGN KEY (`codigoDoContratante`) REFERENCES `transacionador` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `vaga`
 --
 ALTER TABLE `vaga`
-  ADD CONSTRAINT `fk_profissional_has_vaga_profissional1` FOREIGN KEY (`profissionalId`) REFERENCES `transacionador` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_profissional_has_vaga_profissional` FOREIGN KEY (`profissionalId`) REFERENCES `transacionador` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_profissional_has_vaga_vaga1` FOREIGN KEY (`vagaId`) REFERENCES `projeto` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
