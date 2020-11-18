@@ -28,6 +28,8 @@ class Contatos extends MY_Controller {
 		}
 		redirect(base_url('contatos'));
 	}
+
+
 	public function create(){
 		$data['titulo'] = 'Cadastrar contato';
 		$data['id'] = '';
@@ -63,6 +65,8 @@ class Contatos extends MY_Controller {
 			redirect(base_url('contatos'));
 		}
 	}
+
+
 	public function update($id){
 		$contato = $this->Contatos_model->get_where(array('id'=>$id));
 		if($contato){
@@ -78,6 +82,11 @@ class Contatos extends MY_Controller {
 			redirect(base_url('contatos'));
 		}
 	}
+
+
+
+
+
 	public function update_action($id){
         $this->_validationRules();
 		if ($this->form_validation->run() == FALSE){

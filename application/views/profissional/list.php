@@ -1,6 +1,7 @@
 <h1>profissional</h1>
 
 <?=anchor(base_url('profissionais/create'),'Cadastrar');?>
+
 <?php
 echo '<br>';
 !empty($this->session->userdata('mensagem'))?$this->session->userdata('mensagem'):null;
@@ -10,8 +11,8 @@ if(!empty($transacionador)){
   ?>
 <div class="col-3" style="text-align: center">
 	<div class="card">
-    <img src="uploads/{$t->arquivo}" width="40" alt="">
-  <span><?=$t->escolaridade?></span>
+    <img src="uploads/profissionais/<?=$t->arquivo?>" width="40" alt="">
+  <span>Escolaridade : <?=$t->escolaridade?></span>
   <div class="card-body">
     <h5 class="card-title"><?=$t->nome?></h5>
     <span class="card-text"><?=$t->descricao?></span>

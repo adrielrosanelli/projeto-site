@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 18-Nov-2020 às 01:47
+-- Tempo de geração: 19-Nov-2020 às 00:55
 -- Versão do servidor: 10.4.13-MariaDB
 -- versão do PHP: 7.4.8
 
@@ -108,16 +108,39 @@ CREATE TABLE `transacionador` (
   `dataNascimento` date DEFAULT NULL,
   `escolaridade` enum('0','1','2','3','4','5') DEFAULT NULL,
   `precoHora` int(6) DEFAULT NULL,
-  `status` enum('Disponivel','Ocupado') DEFAULT NULL
+  `status` enum('Disponivel','Ocupado') DEFAULT NULL,
+  `arquivo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `transacionador`
 --
 
-INSERT INTO `transacionador` (`id`, `nome`, `email`, `descricao`, `dataNascimento`, `escolaridade`, `precoHora`, `status`) VALUES
-(1, 'adriel', 'adriel16smo@gmail.com', '', '2020-11-11', '2', 1234, 'Disponivel'),
-(2, 'adriel', 'adriel16smo@gmail.com', 'Bacon ipsum dolor amet meatball tenderloin pork chop ground round shankle venison. Alcatra ground round ball tip andouille cupim. Shankle beef ribs frankfurter, chislic ball tip turkey pig short ribs porchetta burgdoggen prosciutto fatback. Fatback hamburger pancetta pork belly rump.', '2020-11-20', '1', 12441, 'Disponivel');
+INSERT INTO `transacionador` (`id`, `nome`, `email`, `descricao`, `dataNascimento`, `escolaridade`, `precoHora`, `status`, `arquivo`) VALUES
+(3, 'robson', 'adriel16smo@gmail.com', 'cuidar dos computadores', '2020-11-02', '1', 3000, '', '35cbf7a945f76c32330ad3793f9a66d8.jpg'),
+(5, 'sistemas', 'asdasdsa@dsadasd.com', 'sadbasidladh', '2020-11-24', '1', 123, 'Disponivel', '1c8ca5e5906366065ffe2fe2bd46e910.jpg'),
+(6, 'adriel', 'adriel16smo@gmail.com', 'cuida das pessoas', '2020-11-19', '1', 123, 'Disponivel', ''),
+(7, 'adriel', 'asd@gmail.com', 'cuida das pessoas', '2020-11-28', '1', 123, 'Disponivel', ''),
+(8, 'sistemas', 'asd@gmail.com', 'cuida das pessoas', '2020-11-20', '1', 123, '', ''),
+(9, 'adriel', 'adriel16smo@gmail.com', 'cuidar de pessoas', '2020-11-27', '1', 1234, 'Disponivel', '492418d0b5ccdf3f63e41e53112de949.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `email` varchar(30) NOT NULL,
+  `senha` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`email`, `senha`) VALUES
+('adriel16smo@gmail.com', '123');
 
 -- --------------------------------------------------------
 
@@ -218,7 +241,7 @@ ALTER TABLE `projeto`
 -- AUTO_INCREMENT de tabela `transacionador`
 --
 ALTER TABLE `transacionador`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restrições para despejos de tabelas
