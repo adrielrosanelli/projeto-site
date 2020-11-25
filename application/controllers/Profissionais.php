@@ -17,7 +17,7 @@ class Profissionais extends MY_Controller
         $this->load->view('profissional/list', $data);
     }
 
-    // CREATE
+    // CREATE 
     public function create(){
         $data['titulo'] = 'Cadastrar-se';
         $data['action'] = base_url('profissionais/create_action');

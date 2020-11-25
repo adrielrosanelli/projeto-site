@@ -1,12 +1,10 @@
 <h1>profissional</h1>
 
 <?=anchor(base_url('profissionais/create'),'Cadastrar');?>
-
+<div class="row">
 <?php
 echo '<br>';
 !empty($this->session->userdata('mensagem'))?$this->session->userdata('mensagem'):null;
-
-if(!empty($transacionador)){
   foreach ($transacionador as $t){
   ?>
 <div class="col-3" style="text-align: center">
@@ -20,13 +18,9 @@ if(!empty($transacionador)){
   </div>
 </div>
   </div>
+  </div>
 
 <?php
   }
-}else{
- echo "<h1>Tá vazio</h1>";
-  
-  exit();
-}
 ?>
 

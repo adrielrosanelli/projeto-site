@@ -1,0 +1,9 @@
+<?=anchor(base_url('projeto/delete/'.$projeto->id),'Deletar');?>
+<br>
+<?=anchor(base_url('projeto/update/'.$projeto->id),'Alterar');?>
+<h2><?=$projeto->nome?>
+<br>
+<small><?=$projeto->dataInicial?></small>
+</h2>
+<br>
+<p><?=$projeto->descricao?></p>

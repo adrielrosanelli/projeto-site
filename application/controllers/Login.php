@@ -25,8 +25,9 @@ class Login extends CI_Controller{
             );
             $busca = $this->Login_model->get($where);
             if($busca){
+
                 $sessao = array('logado'=>true,'nome'=>$busca->nome);
-                $this->session->set_flashdata($sessao);
+                $this->session->set_userdata($sessao);
                 redirect(base_url('home'));
             }else{
                 $this->session->set_flashdata('mensagem','Login invalido');
