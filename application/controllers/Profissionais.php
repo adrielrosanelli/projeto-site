@@ -1,13 +1,16 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
+require_once 'Login.php';
 class Profissionais extends MY_Controller
 {
     public function __construct()
     {
         parent::__construct();
         $this->load->model('Profissionais_model');
+        $this->load->model('Login_model');
         $this->load->library('form_validation');
+
+        
     }
 
     //  HOME
@@ -132,11 +135,20 @@ class Profissionais extends MY_Controller
                 'arquivo'=>$arquivo,
             );
             if($this->Profissionais_model->update($id,$update)){
-                $this->session->set_flashdata('mensagem','Alterado Com sucesso');
+                $this->session->set_flashdata('mensagem','Alterado com Sucesso');
             }else{
                 $this->session->set_flashdata('mensagem','Falha ao alterar');
             }
             redirect(base_url('profissionais'));
+        }
+    }
+    public function detalhes($id)
+    {
+        if (empty($id)) {
+            show_404();
+        } else {
+            $data['transacionador'] = $this->Profissionais_model->get_where(array('id' => $id));
+            $this->load->view('profissional/detalhes', $data);
         }
     }
 
@@ -157,15 +169,7 @@ class Profissionais extends MY_Controller
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
     }
 
-    public function detalhes($id)
-    {
-        if (empty($id)) {
-            show_404();
-        } else {
-            $data['transacionador'] = $this->Profissionais_model->get_where(array('id' => $id));
-            $this->load->view('profissional/detalhes', $data);
-        }
-    }
+    
 
     
 }

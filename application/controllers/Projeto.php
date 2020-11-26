@@ -13,9 +13,10 @@ class Projeto extends MY_Controller{
         $data['projeto'] = $this->Projeto_model->get_all();
         $this->load->view('projeto/list', $data);
     }
-
+ 
     public function create(){
-        $data['titulo'] = 'Cadastrar-se';
+        isLoged($_SERVER['HTTP_REFERER']);
+        $data['titulo'] = 'Cadastrar Vaga';
         $data['action'] = base_url('projeto/create_action');
         $data['id'] = '';
         $data['valor'] = set_value('valor');
@@ -47,6 +48,7 @@ class Projeto extends MY_Controller{
     }
 
     public function delete($id){
+        isLoged($_SERVER['HTTP_REFERER']);
         if(!empty($id) && is_numeric($id)){
             $projeto = $this->Projeto_model->get_where(array('id'=>$id));
             if($projeto){
@@ -61,9 +63,45 @@ class Projeto extends MY_Controller{
         redirect(base_url('projeto'));
     }
 
+    public function update($id){
+        isLoged($_SERVER['HTTP_REFERER']);
+        $projeto = $this->Projeto_model->get_where(array('id'=>$id));
+            if($projeto){
+            $data['titulo'] = 'Alterar Vaga';
+            $data['action'] = base_url('projeto/update_action/'.$projeto->id);
+            $data['id'] = $projeto->id;
+            $data['valor'] = set_value('valor',$projeto->valor);
+            $data['nome'] = set_value('nome',$projeto->nome);
+            $data['descricao'] = set_value('descricao',$projeto->descricao);
+            $data['dataInicial'] = set_value('dataInicial',$projeto->dataInicial);
+            $data['status'] = set_value('status');
+            $this->load->view('projeto/form', $data);
+        }else{
+            $this->session->set_flashdata('mensagem','Vaga não encontrada');
+            redirect(base_url('projeto'));
+        }
+    }
 
-
-
+    public function update_action($id){
+        $this->_validationRules();
+        if($this->form_validation->run()==FALSE){
+            $this->update($id);
+        }else{
+            $update = array(
+                'valor'=>$this->input->post('valor'),
+                'nome'=>$this->input->post('nome'),
+                'descricao'=>$this->input->post('descricao'),
+                'dataInicial'=>$this->input->post('dataInicial'),
+                'status'=>$this->input->post('status'),
+            );
+            if($this->Projeto_model->update($id,$update)){
+                $this->session->set_flashdata('mensagem','Vaga Alterada com Sucesso');
+            }else{
+                $this->session->set_flashdata('mensagem','Falha ao Alterar a vaga');
+            }
+            redirect(base_url("projeto"));
+        }
+    }
 
     public function detalhes($id){
         if(empty($id)){

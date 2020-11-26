@@ -28,7 +28,12 @@ class Login extends CI_Controller{
 
                 $sessao = array('logado'=>true,'nome'=>$busca->nome);
                 $this->session->set_userdata($sessao);
-                redirect(base_url('home'));
+                if(!$_SESSION['ultimaUrl']){
+                    redirect(base_url('home'));
+                }else{
+                    redirect($_SESSION['ultimaUrl']);
+                    session_unset();
+                }
             }else{
                 $this->session->set_flashdata('mensagem','Login invalido');
                 redirect(base_url('login'));
