@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19-Nov-2020 às 00:55
--- Versão do servidor: 10.4.13-MariaDB
--- versão do PHP: 7.4.8
+-- Tempo de geração: 26-Nov-2020 às 01:42
+-- Versão do servidor: 10.4.16-MariaDB
+-- versão do PHP: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -94,6 +94,13 @@ CREATE TABLE `projeto` (
   `codigoDoContratante` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `projeto`
+--
+
+INSERT INTO `projeto` (`id`, `valor`, `nome`, `descricao`, `dataInicial`, `status`, `codigoDoContratante`) VALUES
+(3, 1200, 'Estagiarios2', 'Fazer café toda manhã', '2020-11-26', '', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -104,6 +111,7 @@ CREATE TABLE `transacionador` (
   `id` int(11) NOT NULL,
   `nome` varchar(30) DEFAULT NULL,
   `email` varchar(30) NOT NULL,
+  `senha` varchar(15) NOT NULL,
   `descricao` text NOT NULL,
   `dataNascimento` date DEFAULT NULL,
   `escolaridade` enum('0','1','2','3','4','5') DEFAULT NULL,
@@ -116,13 +124,13 @@ CREATE TABLE `transacionador` (
 -- Extraindo dados da tabela `transacionador`
 --
 
-INSERT INTO `transacionador` (`id`, `nome`, `email`, `descricao`, `dataNascimento`, `escolaridade`, `precoHora`, `status`, `arquivo`) VALUES
-(3, 'robson', 'adriel16smo@gmail.com', 'cuidar dos computadores', '2020-11-02', '1', 3000, '', '35cbf7a945f76c32330ad3793f9a66d8.jpg'),
-(5, 'sistemas', 'asdasdsa@dsadasd.com', 'sadbasidladh', '2020-11-24', '1', 123, 'Disponivel', '1c8ca5e5906366065ffe2fe2bd46e910.jpg'),
-(6, 'adriel', 'adriel16smo@gmail.com', 'cuida das pessoas', '2020-11-19', '1', 123, 'Disponivel', ''),
-(7, 'adriel', 'asd@gmail.com', 'cuida das pessoas', '2020-11-28', '1', 123, 'Disponivel', ''),
-(8, 'sistemas', 'asd@gmail.com', 'cuida das pessoas', '2020-11-20', '1', 123, '', ''),
-(9, 'adriel', 'adriel16smo@gmail.com', 'cuidar de pessoas', '2020-11-27', '1', 1234, 'Disponivel', '492418d0b5ccdf3f63e41e53112de949.jpg');
+INSERT INTO `transacionador` (`id`, `nome`, `email`, `senha`, `descricao`, `dataNascimento`, `escolaridade`, `precoHora`, `status`, `arquivo`) VALUES
+(3, 'robson', 'adriel16smo@gmail.com', '123', 'cuidar dos computadores', '2020-11-02', '1', 3000, '', '35cbf7a945f76c32330ad3793f9a66d8.jpg'),
+(5, 'sistemas', 'asdasdsa@dsadasd.com', '', 'sadbasidladh', '2020-11-24', '1', 123, 'Disponivel', '1c8ca5e5906366065ffe2fe2bd46e910.jpg'),
+(6, 'adriel', 'adriel16smo@gmail.com', '', 'cuida das pessoas', '2020-11-19', '1', 123, 'Disponivel', ''),
+(7, 'adriel', 'asd@gmail.com', '', 'cuida das pessoas', '2020-11-28', '1', 123, 'Disponivel', ''),
+(8, 'sistemas', 'asd@gmail.com', '', 'cuida das pessoas', '2020-11-20', '1', 123, '', ''),
+(9, 'adriel', 'adriel16smo@gmail.com', '', 'cuidar de pessoas', '2020-11-27', '1', 1234, 'Disponivel', '492418d0b5ccdf3f63e41e53112de949.jpg');
 
 -- --------------------------------------------------------
 
@@ -235,7 +243,7 @@ ALTER TABLE `formacao`
 -- AUTO_INCREMENT de tabela `projeto`
 --
 ALTER TABLE `projeto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `transacionador`
