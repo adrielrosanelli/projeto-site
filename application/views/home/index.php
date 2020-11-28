@@ -1,6 +1,10 @@
 
 <div class="row">
 <?php
+!empty($this->session->userdata('mensagem'))?$this->session->userdata('mensagem'):null;
+if(!empty($transacionador)){
+    
+
     foreach($transacionador as $t) {
 ?>
         
@@ -19,5 +23,7 @@
 
 <?php
     }
+    
+}
 ?>
 </div>
