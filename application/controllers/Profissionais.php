@@ -22,6 +22,7 @@ class Profissionais extends MY_Controller
 
     // CREATE 
     public function create(){
+        isLoged($_SERVER['HTTP_REFERER']);
         $data['titulo'] = 'Cadastrar-se';
         $data['action'] = base_url('profissionais/create_action');
         $data['id'] = '';
@@ -69,6 +70,7 @@ class Profissionais extends MY_Controller
 
     // DELETE
     public function delete($id){
+        isLoged($_SERVER['HTTP_REFERER']);
         if (!empty($id) && is_numeric($id)) {
             $transacionador = $this->Profissionais_model->get_where(array('id' => $id));
             if ($transacionador) {
@@ -86,6 +88,7 @@ class Profissionais extends MY_Controller
 
     // UPDATES
     public function update($id){
+        isLoged($_SERVER['HTTP_REFERER']);
         $transacionador = $this->Profissionais_model->get_where(array('id'=>$id));
         if($transacionador){
         $data['titulo'] = 'Alterar';
