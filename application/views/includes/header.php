@@ -10,7 +10,7 @@
 
 </head>
 
-<body>
+<body style="background-color:#1abc9c">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="<?=base_url('home')?>">Navbar</a>

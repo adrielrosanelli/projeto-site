@@ -1,4 +1,4 @@
-<h1>Profissionais</h1>
+<h1 style="color:white">Profissionais</h1>
 
 <?=anchor(base_url('profissionais/create'),'Cadastrar');?>
 <div class="row">
