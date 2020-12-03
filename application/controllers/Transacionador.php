@@ -7,14 +7,17 @@ class Transacionador extends MY_Controller
     {
         parent::__construct();
         $this->load->model('Transacionador_model');
+        $this->load->model('Projeto_model');
         $this->load->library('form_validation');
     }
 
     //  HOME
-    public function index($id)
+    public function index()
     {
-        $data['transacionador'] = $this->Profissionais_model->get_where(array('id' => $id));
-            $this->load->view('profissional/detalhes', $data);
+        $data['projeto'] = $this->Projeto_model->get_byTransacionador(array('transacionador.id'=>$this->session->userdata('id')));
+        var_dump($data);
+        exit();
+        $this->load->view('transacionador/list', $data);
     }
 
     // CREATE 
@@ -157,13 +160,13 @@ class Transacionador extends MY_Controller
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
     }
 
-    public function detalhes($id)
+    public function projetos($codigoDoTransacionador)
     {
-        if (empty($id)) {
+        if (empty($codigoDoTransacionador)) {
             show_404();
         } else {
-            $data['transacionador'] = $this->Profissionais_model->get_where(array('id' => $id));
-            $this->load->view('profissional/detalhes', $data);
+            $data['projeto'] = $this->Projeto_model->get_where(array('codigoDoTransacionador' => $codigoDoTransacionador));
+            $this->load->view('transacionador/list', $data);
         }
     }
 

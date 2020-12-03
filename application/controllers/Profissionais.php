@@ -20,72 +20,6 @@ class Profissionais extends MY_Controller
         $this->load->view('profissional/list', $data);
     }
 
-    // CREATE 
-    public function create(){
-        isLoged($_SERVER['HTTP_REFERER']);
-        $data['titulo'] = 'Cadastrar-se';
-        $data['action'] = base_url('profissionais/create_action');
-        $data['id'] = '';
-        $data['nome'] = set_value('nome');
-        $data['email'] = set_value('email');
-        $data['descricao'] = set_value('descricao');
-        $data['dataNascimento'] = set_value('dataNascimento');
-        $data['escolaridade'] = set_value('escolaridade');
-        $data['precoHora'] = set_value('precoHora');
-        $data['status'] = set_value('status');
-        $this->load->view('profissional/form', $data);
-    }
-
-    public function create_action(){
-        $this->_validationRules();
-        if ($this->form_validation->run() == FALSE) {
-            $this->create();
-        } else {
-            $insert = array(
-                'nome' => $this->input->post('nome'),
-                'email' => $this->input->post('email'),
-                'descricao' => $this->input->post('descricao'),
-                'dataNascimento' => $this->input->post('dataNascimento'),
-                'escolaridade' => $this->input->post('escolaridade'),
-                'precoHora' => $this->input->post('precoHora'),
-                'status' => $this->input->post('status'),
-            );
-            $transacionador = $this->Profissionais_model->insert($insert);
-            if ($transacionador) {
-                $this->_configsUpload();
-                if (!$this->upload->do_upload('arquivo')) {
-                    $this->session->set_flashdata('mensagem', $this->upload->display_errors());
-                    redirect(base_url('profissionais'));
-                    exit();
-                } else {
-                    $upload = $this->upload->data();
-                    $this->Profissionais_model->update($transacionador, array('arquivo' => $upload['file_name']));
-                }
-            } else {
-                $this->session->set_flashdata('mensagem', 'Falha ao cadastrar');
-            }
-            redirect(base_url('profissionais'));
-        }
-    }
-
-    // DELETE
-    public function delete($id){
-        isLoged($_SERVER['HTTP_REFERER']);
-        if (!empty($id) && is_numeric($id)) {
-            $transacionador = $this->Profissionais_model->get_where(array('id' => $id));
-            if ($transacionador) {
-                unlink('uploads/profissionais/'.$transacionador->arquivo);
-                $this->Profissionais_model->delete(array('id' => $id));
-                $this->session->set_flashdata('mensagem', 'Removido com sucesso');
-            } else {
-                $this->session->set_flashdata('mensagem', 'Não existe');
-            }
-        } else {
-            $this->session->set_flashdata('mensagem', 'Não Encontrado');
-        }
-        redirect(base_url('profissionais'));
-    }
-
     // UPDATES
     public function update($id){
         isLoged($_SERVER['HTTP_REFERER']);
@@ -139,6 +73,7 @@ class Profissionais extends MY_Controller
             );
             if($this->Profissionais_model->update($id,$update)){
                 $this->session->set_flashdata('mensagem','Alterado com Sucesso');
+                $this->session->set_userdata($update);
             }else{
                 $this->session->set_flashdata('mensagem','Falha ao alterar');
             }

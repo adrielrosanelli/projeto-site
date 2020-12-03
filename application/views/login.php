@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+<link rel="stylesheet" href="assets/css/styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -22,18 +23,14 @@
     senha: <input type="password" name="senha"><br>
     <input type="submit" value="Entrar">
 </form>
-    <a href="#" class="btn btn-primary">Cadastrar-se</a>
+    <a href="<?=base_url('login/create')?>" class="btn btn-primary">Cadastrar-se</a>
   </div>
 </div>
 
-
-
-
-        
         </div>
     </div>
 </div>
-
+ 
 
 
 

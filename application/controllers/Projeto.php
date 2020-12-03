@@ -6,10 +6,12 @@ class Projeto extends MY_Controller{
     public function __construct(){
         parent::__construct();
         $this->load->model('Projeto_model');
+        $this->load->model('Login_model');
         $this->load->library('form_validation');
     }
 
     public function index(){
+
         $data['projeto'] = $this->Projeto_model->get_all();
         $this->load->view('projeto/list', $data);
     }
@@ -28,6 +30,7 @@ class Projeto extends MY_Controller{
     }
 
     public function create_action(){
+        
         $this->_validationRules();
         if($this->form_validation->run()==FALSE){
             $this->create();
@@ -35,6 +38,7 @@ class Projeto extends MY_Controller{
             $insert = array(
                 'valor' => $this->input->post('valor'),
                 'nome' =>$this->input->post('nome'),
+                'codigoDoContratante'=>$this->session->userdata('id'),
                 'descricao'=>$this->input->post('descricao'),
                 'dataInicial'=>$this->input->post('dataInicial'),
                 'status'=>$this->input->post('status'),
