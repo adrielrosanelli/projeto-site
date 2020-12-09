@@ -32,6 +32,7 @@ class Login extends CI_Controller{
                 'id'=>$busca->id,
                 'nome'=>$busca->nome,
                 'email'=>$busca->email,
+                'telefone'=>$busca->telefone,
                 'senha'=>$busca->senha,
                 'descricao'=>$busca->descricao,
                 'dataNascimento'=>$busca->dataNascimento,

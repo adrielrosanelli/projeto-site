@@ -10,7 +10,7 @@
 
 </head>
 
-<body style="background-color:#1abc9c">
+<body>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="<?=base_url('home')?>">Navbar</a>
@@ -33,7 +33,7 @@
                         <a class="nav-link" href="<?=base_url("transacionador")?>"><?=$this->session->userdata("nome")?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=base_url("login/logout")?>">Logout</a>
+                        <a class="nav-link" href="<?=base_url("login/logout")?>">Login/Logout</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

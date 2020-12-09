@@ -30,9 +30,14 @@ class Projeto_model extends CI_Model{
         $this->db->where($where);
         return $this->db->get(self::table)->row();
     }
-    public function get_byTransacionador($where){
-        $this->db->join('transacionador',"codigoDoContratante=transacionador.id");
-        return $this->db->get(self::table)->row();
+    public function get_byTransacionador($idTransacionador = 0){
+        if ($idTransacionador > 0) {
+            $this->db->select('projeto.id, projeto.nome, projeto.descricao, projeto.dataInicial, projeto.status, projeto.codigoDoContratante, projeto.valor, projeto.telefoneContratante ,
+                                transacionador.nome AS transNome, transacionador.telefone AS transTelefone');
+            $this->db->join('transacionador',"codigoDoContratante=transacionador.id");
+            $this->db->where('codigoDoContratante', $idTransacionador);            
+            return $this->db->get(self::table)->result();
+        }
     }
 
 }

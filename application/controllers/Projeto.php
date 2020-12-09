@@ -39,6 +39,7 @@ class Projeto extends MY_Controller{
                 'valor' => $this->input->post('valor'),
                 'nome' =>$this->input->post('nome'),
                 'codigoDoContratante'=>$this->session->userdata('id'),
+                'telefoneContratante'=>$this->session->userdata('telefone'),
                 'descricao'=>$this->input->post('descricao'),
                 'dataInicial'=>$this->input->post('dataInicial'),
                 'status'=>$this->input->post('status'),

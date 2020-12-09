@@ -14,10 +14,8 @@ class Transacionador extends MY_Controller
     //  HOME
     public function index()
     {
-        $data['projeto'] = $this->Projeto_model->get_byTransacionador(array('transacionador.id'=>$this->session->userdata('id')));
-        var_dump($data);
-        exit();
-        $this->load->view('transacionador/list', $data);
+        $data['projeto'] = $this->Projeto_model->get_byTransacionador($this->session->userdata('id'));
+        $this->load->view('transacionador/list', $data);       
     }
 
     // CREATE 
@@ -32,6 +30,7 @@ class Transacionador extends MY_Controller
         $data['escolaridade'] = set_value('escolaridade');
         $data['precoHora'] = set_value('precoHora');
         $data['status'] = set_value('status');
+        $data['telefone'] = set_value('telefone');
         $this->load->view('profissional/form', $data);
     }
 
@@ -93,6 +92,7 @@ class Transacionador extends MY_Controller
         $data['id'] = $transacionador->id;
         $data['nome'] = set_value('nome', $transacionador->nome);
         $data['email'] = set_value('email', $transacionador->email);
+        $data['telefone'] = set_value('telefone', $transacionador->telefone);
         $data['descricao'] = set_value('descricao', $transacionador->descricao);
         $data['dataNascimento'] = set_value('dataNascimento', $transacionador->dataNascimento);
         $data['escolaridade'] = set_value('escolaridade', $transacionador->escolaridade);
@@ -102,7 +102,7 @@ class Transacionador extends MY_Controller
         $this->load->view('profissional/form', $data);
         }else{
             $this->session->set_flashdata('mensagem','Não encontrado');
-            redirect(base_url("profissionais"));
+            redirect(base_url("transacionador"));
         }
     }
     

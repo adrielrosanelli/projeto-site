@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03-Dez-2020 às 01:53
+-- Tempo de geração: 09-Dez-2020 às 01:46
 -- Versão do servidor: 10.4.16-MariaDB
 -- versão do PHP: 7.4.12
 
@@ -92,18 +92,22 @@ CREATE TABLE `projeto` (
   `dataInicial` date DEFAULT NULL,
   `status` enum('Disponivel','Negociando','fechado') DEFAULT NULL,
   `codigoDoContratante` int(11) DEFAULT NULL,
-  `idDoContratante` int(3) NOT NULL
+  `telefoneContratante` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `projeto`
 --
 
-INSERT INTO `projeto` (`id`, `valor`, `nome`, `descricao`, `dataInicial`, `status`, `codigoDoContratante`, `idDoContratante`) VALUES
+INSERT INTO `projeto` (`id`, `valor`, `nome`, `descricao`, `dataInicial`, `status`, `codigoDoContratante`, `telefoneContratante`) VALUES
 (3, 1200, 'Estagiarios2', 'Fazer café toda manhã', '2020-11-26', '', NULL, 0),
 (4, 1000, 'Estagiario', 'Fazer café toda manhã', '2020-12-02', '', NULL, 0),
 (5, 10000, 'adri', 'Desenvolver nova aplicação contavel', '2020-12-10', 'Disponivel', NULL, 0),
-(6, 3000, 'gerenteseses', 'Fazer café toda manhã', '2021-01-08', 'Disponivel', 15, 0);
+(6, 3000, 'gerenteseses', 'Fazer café toda manhã', '2021-01-08', 'Disponivel', 15, 0),
+(7, 1245, 'Estagiario', 'Fazer café toda manhã', '2020-12-09', 'Disponivel', 3, 0),
+(8, 1234, 'FrontEnd', 'Projetar telas bonitas', '2020-12-08', 'Disponivel', 3, 0),
+(9, 1234, 'novaVaga', 'Fazer café toda manhã', '2020-12-09', 'Disponivel', 3, 999999999),
+(10, 1234, 'Novíssima Vaga', 'A vaga mais nova', '2020-12-09', 'Disponivel', 3, 999999999);
 
 -- --------------------------------------------------------
 
@@ -115,6 +119,7 @@ CREATE TABLE `transacionador` (
   `id` int(11) NOT NULL,
   `nome` varchar(30) DEFAULT NULL,
   `email` varchar(30) NOT NULL,
+  `telefone` int(15) NOT NULL,
   `senha` varchar(15) NOT NULL,
   `descricao` text NOT NULL,
   `dataNascimento` date DEFAULT NULL,
@@ -128,15 +133,15 @@ CREATE TABLE `transacionador` (
 -- Extraindo dados da tabela `transacionador`
 --
 
-INSERT INTO `transacionador` (`id`, `nome`, `email`, `senha`, `descricao`, `dataNascimento`, `escolaridade`, `precoHora`, `status`, `arquivo`) VALUES
-(3, 'robson', 'adriel16smo@gmail.com', '123', 'cuidar dos computadores', '2020-11-02', 'Ensino-Médio', 3000, 'Disponivel', 'cd55b9f09847324a58488846b62a1f98.jpg'),
-(5, 'sistemas', 'adeilson@gmail.com', '1234', 'sadbasidladh', '2020-11-24', 'Ensino-Médio', 123, 'Disponivel', '1c8ca5e5906366065ffe2fe2bd46e910.jpg'),
-(6, 'adriel', 'adriel16smo@gmail.com', '', 'cuida das pessoas', '2020-11-19', 'Ensino-Médio', 123, 'Disponivel', ''),
-(7, 'adriel', 'asd@gmail.com', '', 'cuida das pessoas', '2020-11-28', 'Ensino-Médio', 123, 'Disponivel', ''),
-(8, 'sistemas', 'asd@gmail.com', '', 'cuida das pessoas', '2020-11-20', 'Ensino-Médio', 123, '', ''),
-(9, 'adriel', 'adriel16smo@gmail.com', '', 'cuidar de pessoas', '2020-11-27', 'Ensino-Médio', 1234, 'Disponivel', '492418d0b5ccdf3f63e41e53112de949.jpg'),
-(11, 'Estagiario', 'adriel16-smo@gmail.com', '', 'Sou formado em pirueta quadrupla meia carpada ao contrario\r\n\r\nMeus contatos são :\r\n9999999999 - whatsapp\r\n\r\nadriel16-smo@gmail.com \r\nlinkedin e e-mail', '2020-12-02', 'Graduação', 100, '', '4a72bbccd1ae319317165256a475a9f5.jpg'),
-(15, 'Adriel', 'adri@gmail.com', '12345', '', '1997-01-04', 'Graduação', 2000, 'Disponivel', '9fca79334fdd65b349fc360c0de1c110.jpg');
+INSERT INTO `transacionador` (`id`, `nome`, `email`, `telefone`, `senha`, `descricao`, `dataNascimento`, `escolaridade`, `precoHora`, `status`, `arquivo`) VALUES
+(3, 'robson', 'adriel16smo@gmail.com', 999999999, '123', 'cuidar dos computadores', '2020-11-02', 'Ensino-Médio', 3000, 'Disponivel', 'cd55b9f09847324a58488846b62a1f98.jpg'),
+(5, 'sistemas', 'adeilson@gmail.com', 0, '1234', 'sadbasidladh', '2020-11-24', 'Ensino-Médio', 123, 'Disponivel', '1c8ca5e5906366065ffe2fe2bd46e910.jpg'),
+(6, 'adriel', 'adriel16smo@gmail.com', 0, '', 'cuida das pessoas', '2020-11-19', 'Ensino-Médio', 123, 'Disponivel', ''),
+(7, 'adriel', 'asd@gmail.com', 0, '', 'cuida das pessoas', '2020-11-28', 'Ensino-Médio', 123, 'Disponivel', ''),
+(8, 'sistemas', 'asd@gmail.com', 0, '', 'cuida das pessoas', '2020-11-20', 'Ensino-Médio', 123, '', ''),
+(9, 'adriel', 'adriel16smo@gmail.com', 0, '', 'cuidar de pessoas', '2020-11-27', 'Ensino-Médio', 1234, 'Disponivel', '492418d0b5ccdf3f63e41e53112de949.jpg'),
+(11, 'Estagiario', 'adriel16-smo@gmail.com', 0, '', 'Sou formado em pirueta quadrupla meia carpada ao contrario\r\n\r\nMeus contatos são :\r\n9999999999 - whatsapp\r\n\r\nadriel16-smo@gmail.com \r\nlinkedin e e-mail', '2020-12-02', 'Graduação', 100, '', '4a72bbccd1ae319317165256a475a9f5.jpg'),
+(15, 'Adriel', 'adri@gmail.com', 0, '12345', '', '1997-01-04', 'Graduação', 2000, 'Disponivel', '9fca79334fdd65b349fc360c0de1c110.jpg');
 
 --
 -- Índices para tabelas despejadas
@@ -213,7 +218,7 @@ ALTER TABLE `formacao`
 -- AUTO_INCREMENT de tabela `projeto`
 --
 ALTER TABLE `projeto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `transacionador`
