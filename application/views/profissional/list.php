@@ -1,4 +1,4 @@
-<h1 style="color:white">Profissionais</h1>
+<h1>Profissionais</h1>
 
 <?=anchor(base_url('login/create'),'Cadastrar-se');?>
 <div class="row">
@@ -7,21 +7,22 @@ echo '<br>';
 !empty($this->session->userdata('mensagem'))?$this->session->userdata('mensagem'):null;
   foreach ($transacionador as $t){
   ?>
-<div class="col-3" style="text-align: center">
-	<div class="card">
-    <img src="uploads/profissionais/<?=$t->arquivo?>" width="40" alt="">
+<div class="col-12 col-sm-6 col-md-4 col-xl-3" style="margin-bottom:3%">
+	<div class="card" style="height:100%; justify-content:center">
+    <img src="uploads/profissionais/<?=$t->arquivo?>" width="100%" alt="">
   <span>Escolaridade : <?=$t->escolaridade?></span>
   <div class="card-body">
     <h5 class="card-title"><?=$t->nome?></h5>
     <h5 class="card-title"><?=$t->id?></h5>
     <span class="card-text"><?=$t->descricao?></span>
+    <br>
     <a href="<?=base_url('profissionais/detalhes/'.$t->id)?>" class="btn btn-primary">+ detalhes</a>
   </div>
 </div>
   </div>
-  </div>
-
-<?php
+  
+  <?php
   }
-?>
+  ?>
+  </div>
 

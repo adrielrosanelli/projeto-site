@@ -5,12 +5,13 @@
 <h3><?=$this->session->userdata("telefone")?></h3>
 <br>
 <?=anchor(base_url('profissionais/update/'.$this->session->userdata("id")),'Alterar');?>
+<div class="row">
 <?php
 
 foreach ($projeto as $p){
   ?>
-<div class="col-3" style="text-align: center">
-	<div class="card">
+<div class="col-12 col-sm-6 col-md-4 col-xl-3" style="margin-bottom:3%">
+	<div class="card" style="height:100%">
   <span>Oferta : <?=$p->valor?></span>
   <div class="card-body">
     <h5 class="card-title"><?=$p->nome?></h5>
@@ -20,8 +21,9 @@ foreach ($projeto as $p){
   </div>
 </div>
   </div>
-  </div>
 
-<?php
+  
+  <?php
   }
   ?>
+  </div>
