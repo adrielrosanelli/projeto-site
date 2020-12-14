@@ -1,6 +1,6 @@
 <h1>Vagas</h1>
 
-<?=anchor(base_url('projeto/create'),'Cadastrar');?>
+<a href="<?=base_url('projeto/create')?>" class="btn btn-primary" style="margin-bottom: 2%;margin-top:1%">Cadastrar Vaga</a>
 <div class="row">
 <?php
 echo '<br>';

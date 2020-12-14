@@ -1,6 +1,5 @@
 <h1>Profissionais</h1>
-
-<?=anchor(base_url('login/create'),'Cadastrar-se');?>
+<a href="<?=base_url('login/create')?>" class="btn btn-primary" style="margin-bottom: 2%;margin-top:1%">Cadastrar-Se</a>
 <div class="row">
 <?php
 echo '<br>';
