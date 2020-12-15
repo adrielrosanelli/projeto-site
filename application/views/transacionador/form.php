@@ -1,4 +1,4 @@
-<fieldset>
+<!-- <fieldset>
 <legend><?=$titulo?></legend>
 <?php echo validation_errors();?>
 <form enctype="multipart/form-data" method="POST" action="<?=$action?>">
@@ -18,4 +18,4 @@ if(!empty($arquivo)){
 ?>
 <input type="submit" value="Gravar">
 </form>
-</fieldset> 
+</fieldset>  -->

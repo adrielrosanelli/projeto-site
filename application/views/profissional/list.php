@@ -12,8 +12,8 @@ echo '<br>';
   <span>Escolaridade : <?=$t->escolaridade?></span>
   <div class="card-body">
     <h5 class="card-title"><?=$t->nome?></h5>
-    <h5 class="card-title"><?=$t->id?></h5>
-    <span class="card-text"><?=$t->descricao?></span>
+    <span class="card-text"><?=$t->descricao?></span><br>
+    <span class="card-text"><?=$t->precoHora?></span>
     <br>
     <a href="<?=base_url('profissionais/detalhes/'.$t->id)?>" class="btn btn-primary">+ detalhes</a>
   </div>

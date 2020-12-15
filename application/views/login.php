@@ -20,12 +20,12 @@
 <?php echo validation_errors();?>
 <?=!empty($this->session->userdata('mensagem'))?$this->session->userdata('mensagem'):null;?>
 <form method="post" action="<?=base_url('login/action')?>">
-    E-mail: <input type="email" name="email"><br>
-    senha: <input type="password" name="senha"><br>
-    <button type="submit" class="btn btn-success">Entrar</button>
+    E-mail: <input class="form-control" type="email" name="email">
+    senha: <input class="form-control" type="password" name="senha">
+    <button type="submit" class="btn btn-success" style="margin-top:5%">Entrar</button>
     <!-- <input type="submit" value="Entrar"> -->
+    <a href="<?=base_url('login/create')?>" class="btn btn-primary" style="margin-top:5%">Cadastrar-se</a>
 </form>
-    <a href="<?=base_url('login/create')?>" class="btn btn-primary">Cadastrar-se</a>
   </div>
 </div>
 

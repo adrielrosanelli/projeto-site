@@ -1,4 +1,5 @@
 <br>
+<?=anchor(base_url('projeto/update/'.$projeto->id),'Alterar');?>
 <h2><?=$projeto->nome?>
 <br>
 <small><?=$projeto->dataInicial?></small>
